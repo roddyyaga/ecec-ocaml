@@ -1,3 +1,9 @@
+(rule
+(deps (source_tree ecec))
+(targets libece.a)
+(action (copy ecec/libece.a libece.a)))
+
 (library
  (name ecec)
- (libraries ctypes))
+ (libraries ctypes)
+ (foreign_archives ece))

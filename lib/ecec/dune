@@ -1,0 +1,9 @@
+(rule
+(deps (source_tree .))
+(targets libece.a)
+(action (progn
+        (chdir build
+          (progn
+          (run cmake -DOPENSSL_ROOT_DIR=/usr/local ..)
+          (run make)
+          (run cp libece.a ../libece.a))))))

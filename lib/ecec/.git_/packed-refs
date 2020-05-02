@@ -1,0 +1,7 @@
+# pack-refs with: peeled fully-peeled sorted 
+9c51ad6b959bc775b6a99018a43803d090ed9f05 refs/remotes/origin/master
+8b7b98060f46c2dab70a560fd3506d9aba816c57 refs/remotes/origin/vapid
+e2d36139d7bc80917e43e59ee90e39c60410bed1 refs/remotes/origin/vapid-sign-verify
+6276b0cd456283275b71fe939201b55ee0f6b82a refs/tags/v0.1.0
+1c6d7107ccdd1d6db9f742780620fd1e322dd5e5 refs/tags/v0.9.0
+778a91d9d4c391715a56bbe32acb01083c8396b3 refs/tags/v0.9.1

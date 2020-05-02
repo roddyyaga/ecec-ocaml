@@ -1,0 +1,47 @@
+language: c
+compiler:
+  - clang
+  - gcc
+sudo: false
+
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+    packages:
+      - cmake
+      - cmake-data
+      - electric-fence
+      - moreutils
+      - valgrind
+
+cache:
+  ccache: true
+  directories:
+    - $HOME/.src
+
+env:
+  global:
+    - OPENSSL_VERSION=1.1.0e
+    - LCOV_VERSION=1.13
+    - PATH=$HOME/.local/bin:$PATH
+  matrix:
+    - COVERAGE=1 CMAKE_BUILD_TYPE=Debug
+    - CMAKE_BUILD_TYPE=Release
+
+before_install:
+  - ./.travis/before_install.sh
+
+install:
+  - ./.travis/install.sh
+
+script:
+  - mkdir build
+  - pushd build
+  - cmake -DOPENSSL_ROOT_DIR=$HOME/.local ..
+  - make check
+  - valgrind --leak-check=full ./ece-test
+  - popd
+
+after_success:
+  - ./.travis/after_success.sh

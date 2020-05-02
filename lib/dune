@@ -5,5 +5,8 @@
 
 (library
  (name ecec)
+ (public_name ecec)
+ (modes native)
  (libraries ctypes)
- (foreign_archives ece))
+ (foreign_archives ece)
+ (flags (:standard -cclib -lcrypto)))

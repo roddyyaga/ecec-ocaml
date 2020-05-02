@@ -1,10 +1,12 @@
-open Ctypes
-
 let () = print_endline "test"
 
-let x = allocate uint8_t (Unsigned.UInt8.of_int 42)
-let y = Unsigned.Size_t.of_int 4
+let p256dh =
+  "BDwwYm4O5dZG9SO6Vaz168iDLGWMmitkj5LFvunvMfgmI2fZdAEaiHTDfKR0fvr0D3V56cSGSeUwP0xNdrXho5k"
 
-let z =  Ecec.Ffi.ece_aes128gcm_plaintext_max_length x y
+let auth = "xcmQLthL5H2pJNuxrZO-qQ"
 
-let () = Printf.printf "z is %d\n" (Unsigned.Size_t.to_int z)
+let plaintext = "Test message 123"
+
+let output = Ecec.Encryption.aes128gcm_encrypt ~p256dh ~auth plaintext
+
+let () = print_endline output
